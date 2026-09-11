@@ -3,6 +3,9 @@ import com.bhaktiBhraman.app.features.temple.dto.TempleRequest;
 import com.bhaktiBhraman.app.features.temple.entity.Temple;
 import com.bhaktiBhraman.app.features.temple.repository.TempleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
@@ -46,5 +49,11 @@ public class TempleService {
                 .build();
 
         return templeRepository.save(temple);
+    }
+
+    // 🚀 Paginated Fetch Method
+    public Page<Temple> getPaginatedTemples(int page, int limit) {
+        Pageable pageable = PageRequest.of(page, limit);
+        return templeRepository.findAll(pageable);
     }
 }
