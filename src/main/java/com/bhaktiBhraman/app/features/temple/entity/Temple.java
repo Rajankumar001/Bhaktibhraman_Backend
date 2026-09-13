@@ -20,10 +20,10 @@ public class Temple {
     private Long id;
     private String name;
     private String description;
-    private String imageUrl;
     private String location;
     private String state;
     private Double latitude;
     private Double longitude;
 
+    private String imageUrl;
 }
